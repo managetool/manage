@@ -17,5 +17,6 @@
 	<classpathentry kind="con" path="org.eclipse.wst.jsdt.launching.FireFoxBrowserLibrary"/>
 	<classpathentry kind="con" path="org.eclipse.wst.jsdt.launching.InternetExplorer"/>
 	<classpathentry kind="con" path="com.zend.jsdt.support.prototype.LIBRARY"/>
+	<classpathentry kind="con" path="com.zend.jsdt.support.dojo.LIBRARY"/>
 	<classpathentry kind="output" path=""/>
 </classpath>
