@@ -1,0 +1,19 @@
+
+.pages>a,.pages>strong{background: #f2f2f2; border: 1px #ccc solid; padding: 2px 10px; margin:5px; font-size: 12px; color:#333; text-decoration: none; display: inline-block; height:20px; line-height:20px}
+.a0{ background:#FFF;}
+.a1{ background:#CCC;}
+.crm_boder{
+    border-bottom: 1px solid #E8E8E8;
+    border-right: 1px solid #E8E8E8;
+    border-left: 1px solid #E8E8E8;
+    height: 25px;
+    line-height: 25px;
+}
+.crm_boder > table {
+    float: left;
+    width: 268px;
+}
+.bianmamanage a{color: #6F3112;
+    text-decoration: none;}
+.bianmamanage .selected{color: #6FA812;
+    text-decoration: none;}
