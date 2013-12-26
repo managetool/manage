@@ -4,4 +4,8 @@
 */cache/*
 */cache/!index.html
 */*.sql
-*/applaction/config/config.php
+*/application/config/config.php
+*/application/config/database.php
+*/.settings
+*/.buildpath
+*/.project
