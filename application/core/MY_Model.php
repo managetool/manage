@@ -24,21 +24,22 @@ class MY_Model extends CI_Model {
 		return $result;
 	}
 	function query($where='',$order='',$limit=''){
-	    $wheresql=$this->wheresql($where);
-		$sql="select * from `".$this->table."`".$wheresql.$order.$limit;
+	    $whereSql=$this->whereSql($where);
+		$sql="select * from `".$this->table."`".$whereSql.$order.$limit;
 		$result=$this->db->query($sql)->result();
 		return $result;
 	}
-	function wheresql($where){
+	function whereSql($where){
+        $whereSql = $comm = '';
 		if(is_array($where)){
 			foreach($where as $k=>$v){
-				$wheresql.=$comm."`$k`='$v'";
+				$whereSql.=$comm."`$k`='$v'";
 				$comm=' and ';
 			}
-			$wheresql=" where ".$wheresql;
+			$whereSql=" where ".$whereSql;
 		}else{
-			$wheresql=$where?" where ".$where:'';
+			$whereSql=$where?" where ".$where:'';
 		}
-		return $wheresql;
+		return $whereSql;
 	}
 }
