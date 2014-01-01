@@ -139,7 +139,7 @@ body {
       <li> <a class="head">个人设置</a>
       <ul>
         <li><a href="/user/info" target="rightFrame">修改信息</a></li>
-        <li><a href="/user/pswd" target="rightFrame">修改密码</a></li>
+        <li><a href="/user/password" target="rightFrame">修改密码</a></li>
       </ul>
     </li>
     <?php }?>

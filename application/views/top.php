@@ -37,7 +37,7 @@ a img {
             <td width="33" height="27"><img src="images/main_05.gif" width="33" height="27" /></td>
             <td width="248" background="images/main_06.gif"><table width="225" border="0" align="center" cellpadding="0" cellspacing="0">
               <tr>
-                <td height="17"><div align="right"><a href="/user/pswd" target="rightFrame"><img src="images/pass.gif" width="69" height="17" /></a></div></td>
+                <td height="17"><div align="right"><a href="/user/password" target="rightFrame"><img src="images/pass.gif" width="69" height="17" /></a></div></td>
                 <td><div align="right"><a href="/user/info" target="rightFrame"><img src="images/user.gif" width="69" height="17" /></a></div></td>
                 <td><div align="right"><a href="/user/logout" target="_parent"><img src="images/quit.gif" alt=" " width="69" height="17" /></a></div></td>
               </tr>

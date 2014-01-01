@@ -37,37 +37,37 @@ body {
 function FormCheck() 
 { 
     
-	 if (myform.olduserpwd.value=="")
+	 if (myForm.oldUserPassword.value=="")
 	  {
 	    alert("请您填写旧密码！");
-	    document.myform.olduserpwd.focus();
+	    document.myForm.oldUserPassword.focus();
 	    return false;
 	  }  
-	 if (myform.userpwd.value=="")
+	 if (myForm.userPassword.value=="")
 	  {
 	    alert("请您填写密码！");
-	    document.myform.userpwd.focus();
+	    document.myForm.userPassword.focus();
 	    return false;
 	  }
 	var filter=/^\s*[A-Za-z0-9_-]{4,20}\s*$/;
-	if (!filter.test(document.myform.userpwd.value)) { 
+	if (!filter.test(document.myForm.userpwd.value)) {
 	alert("密码填写不正确,请重新填写！可使用的字符为（A-Z a-z 0-9 下划线 减号）长度不小于4个字符，不超过20个字符，注意不要使用空格。"); 
-	document.myform.userpwd.focus();
-	document.myform.userpwd.select();
+	document.myForm.userPassword.focus();
+	document.myForm.userPassword.select();
 	return false; 
 	}   
 	  
-	  if (myform.userpwdconfirm.value=="")
+	  if (myForm.userPasswordConfirm.value=="")
 	  {
 	    alert("请您填写确认密码！");
-	    document.myform.userpwdconfirm.focus();
+	    document.myForm.userPasswordConfirm.focus();
 	    return false;
 	  }    
 
-	if (document.myform.userpwd.value!=document.myform.userpwdconfirm.value ){
+	if (document.myForm.userPassword.value!=document.myForm.userPasswordConfirm.value ){
 	alert("两次填写的密码不一致，请重新填写！"); 
-	document.myform.userpwd.focus();
-	document.myform.userpwd.select();
+	document.myForm.userPassword.focus();
+	document.myForm.userPasswordConfirm.select();
 	return false; 
 	} 
   
@@ -101,22 +101,22 @@ function FormCheck()
   </tr>
   <tr>
     <td>
-    <form name="myform" method="post" action="/user/pswd" onsubmit="return FormCheck();" style="padding:0px;margin:0px 0px 0px 0px;">
+    <form name="myForm" method="post" action="/user/password" onsubmit="return FormCheck();" style="padding:0px;margin:0px 0px 0px 0px;">
 	    <table class="STYLE19" width="100%" border="0" cellspacing="0" cellpadding="0" >
 	     <tr> 
             <td   style="text-align:right;height:25px;line-height:25px;padding:2px;width:15%;border-bottom:1px solid #e8e8e8;border-right:1px solid #e8e8e8;">旧密码：</td>
-            <td   style="text-align:left;height:25px;line-height:25px;padding:2px;width:45%;border-bottom:1px solid #e8e8e8;border-right:1px solid #e8e8e8;"><input name="olduserpwd" type="password" id="olduserpwd" size="10" maxlength="20"></td>
+            <td   style="text-align:left;height:25px;line-height:25px;padding:2px;width:45%;border-bottom:1px solid #e8e8e8;border-right:1px solid #e8e8e8;"><input name="oldUserPassword" type="password" id="oldUserPassword" size="10" maxlength="20"></td>
             <td  style="text-align:left;height:25px;line-height:25px;padding:2px;width:40%;border-bottom:1px solid #e8e8e8;"></td>
           </tr>
            <tr> 
             <td   style="text-align:right;height:25px;line-height:25px;padding:2px;width:15%;border-bottom:1px solid #e8e8e8;border-right:1px solid #e8e8e8;">新密码：</td>
-            <td   style="text-align:left;height:25px;line-height:25px;padding:2px;width:45%;border-bottom:1px solid #e8e8e8;border-right:1px solid #e8e8e8;"><input name="userpwd" type="password" id="userpwd" size="10" maxlength="20"></td>
+            <td   style="text-align:left;height:25px;line-height:25px;padding:2px;width:45%;border-bottom:1px solid #e8e8e8;border-right:1px solid #e8e8e8;"><input name="userPassword" type="password" id="userPassword" size="10" maxlength="20"></td>
             <td   style="text-align:left;height:25px;line-height:25px;padding:2px;width:40%;border-bottom:1px solid #e8e8e8;">可使用的字符为（A-Z 
               a-z 0-9 下划线 减号）长度不小于4个字符，不超过20个字符</td>
           </tr>
           <tr> 
             <td   style="text-align:right;height:25px;line-height:25px;padding:2px;width:15%;border-bottom:1px solid #e8e8e8;border-right:1px solid #e8e8e8;">确认密码：</td>
-            <td   style="text-align:left;height:25px;line-height:25px;padding:2px;width:45%;border-bottom:1px solid #e8e8e8;border-right:1px solid #e8e8e8;"><input name="userpwdconfirm" type="password" id="userpwdconfirm" size="10" maxlength="20"></td>
+            <td   style="text-align:left;height:25px;line-height:25px;padding:2px;width:45%;border-bottom:1px solid #e8e8e8;border-right:1px solid #e8e8e8;"><input name="userPasswordConfirm" type="password" id="userPasswordConfirm" size="10" maxlength="20"></td>
           <td   style="text-align:left;height:25px;line-height:25px;padding:2px;width:40%;border-bottom:1px solid #e8e8e8;">              </td>
           </tr>
           <tr align="center"> 

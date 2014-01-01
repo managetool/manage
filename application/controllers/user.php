@@ -26,9 +26,9 @@ class user extends CM_Controller
                 $this->showMessage('密码不正确', '/user');
             } else {
                 $this->session->set_userdata(array(
-                    'userId' => $user->userId,
+                    'userId' => $user->id,
                     'username' => $user->username,
-                    'groupId' => $user->groupId
+                    'groupId' => $user->groupid
                 ));
                 $this->goToUrl('/');
             }
@@ -51,7 +51,7 @@ class user extends CM_Controller
     {
         $adminID = 1;
         $userId = $this->session->userdata('userId');
-        $user = $this->user_model->get_one($userId);
+        $user = $this->user_model->get_one($userId, 1);
         if ($this->input->post()) {
             $groupId = $this->input->post('groupId');
             if ($userId != $adminID) {
@@ -81,31 +81,33 @@ class user extends CM_Controller
     /**
      * 修改密码
      */
-    public function pswd()
+    public function password()
     {
         if ($this->input->post()) {
-            $olduserpwd = $this->input->post('olduserpwd');
-            $userpwd = $this->input->post('userpwd');
-            $userpwdconfirm = $this->input->post('userpwdconfirm');
-            $userid = $this->session->userdata('userid');
-            $user = $this->user_model->get_one($userid);
-            if ($userpwd == $userpwdconfirm && $olduserpwd == $user->userpwd) {
+            $oldUserPassword = $this->input->post('oldUserPassword');
+            $userPassword = $this->input->post('userPassword');
+            $userPasswordConfirm = $this->input->post('userPasswordConfirm');
+            $userId = $this->session->userdata('userId');
+            $user = $this->user_model->get_one($userId, 1);
+            $url = "/user/password";
+            if ($userPassword == $userPasswordConfirm && md5($oldUserPassword) == $user->password) {
                 $data = array(
-                    'userpwd' => $userpwd
+                    'password' => md5($userPassword)
                 );
                 $where = array(
-                    'userid' => $user->userid
+                    'id' => $user->id
                 );
-                $resulr = $this->user_model->update($data, $where);
-                $url = "/user/pswd";
-                if ($resulr) {
+                $result = $this->user_model->update($data, $where);
+                if ($result) {
                     $this->showMessage("密码更新成功!", $url);
                 } else {
                     $this->showMessage('操作失败！', $url);
                 }
+            }else{
+                $this->showMessage('密码不正确！', $url);
             }
         } else {
-            $this->load->view('user/pswd');
+            $this->load->view('user/password');
         }
     }
 

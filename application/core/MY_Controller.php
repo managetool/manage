@@ -8,7 +8,7 @@ class ADMIN_Controller extends CM_Controller
         if (!$this->session->userdata('username')) {
             $this->goToUrl('/user');
         } else {
-            $this->load->vars(array('userId' => $this->session->userdata('id'),
+            $this->load->vars(array('userId' => $this->session->userdata('userId'),
                     'username' => $this->session->userdata('username'),
                     'groupId' => $this->session->userdata('groupId')
                 )

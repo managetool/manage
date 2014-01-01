@@ -151,7 +151,7 @@
                                     $groupId = $v->id;
                                     ?>
                                     <OPTION value="<?= $groupId ?>"
-                                            <?php if ($user->groupId == $groupId){ ?>selected="selected"<?php } ?>>
+                                            <?php if ($user->groupid == $groupId){ ?>selected="selected"<?php } ?>>
                                         -<?= $groupName ?>-
                                     </OPTION>;
                                 <?

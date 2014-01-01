@@ -17,9 +17,14 @@ class user_model extends MY_Model
         $this->table = "userInfo";
     }
 
-    public function get_one($username)
+    public function get_one($username, $isId = 0)
     {
-        return $this->db->get_where($this->table, array('username' => $username))->row();
+        if ($isId) {
+            $where = array('id' => $username);
+        } else {
+            $where = array('username' => $username);
+        }
+        return $this->db->get_where($this->table, $where)->row();
     }
 
     public function update_info($data, $params)
