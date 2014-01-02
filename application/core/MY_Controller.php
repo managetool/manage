@@ -10,6 +10,7 @@ class ADMIN_Controller extends CM_Controller
         } else {
             $this->load->vars(array('userId' => $this->session->userdata('userId'),
                     'username' => $this->session->userdata('username'),
+                    'nickname' => $this->session->userdata('nickname'),
                     'groupId' => $this->session->userdata('groupId')
                 )
             );

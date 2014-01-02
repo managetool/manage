@@ -16,21 +16,28 @@ class user extends CM_Controller
 
     public function login()
     {
+        $error_url = '/user';
         if ($this->input->post()) {
             $password = $this->input->post('password');
             $username = $this->input->post('username');
             $user = $this->user_model->get_one($username);
             if (!$user) {
-                $this->showMessage('用户不存在', '/user');
-            } elseif ($user->userpwd != $password) {
-                $this->showMessage('密码不正确', '/user');
+                $this->showMessage('用户不存在', $error_url);
+            } elseif ($user->password != md5($password)) {
+                $this->showMessage('密码不正确', $error_url);
             } else {
-                $this->session->set_userdata(array(
-                    'userId' => $user->id,
-                    'username' => $user->username,
-                    'groupId' => $user->groupid
-                ));
-                $this->goToUrl('/');
+                if($this->user_model->is_admin($user->id)){
+                    $this->session->set_userdata(array(
+                        'userId' => $user->id,
+                        'username' => $user->username,
+                        'nickname' => $user->nickname,
+                        'groupId' => $user->groupid
+                    ));
+                    $this->goToUrl('/');
+                }else{
+                    $this->showMessage("无管理权限", $error_url);
+                }
+
             }
         }
     }
@@ -53,18 +60,27 @@ class user extends CM_Controller
         $userId = $this->session->userdata('userId');
         $user = $this->user_model->get_one($userId, 1);
         if ($this->input->post()) {
+            $url = "/user/info";
             $groupId = $this->input->post('groupId');
             if ($userId != $adminID) {
                 $data ['groupId'] = $groupId;
             }
-            $data ['username'] = $this->input->post('username');
+            $username = $this->input->post('username');
+            if($username != $user->username){
+                $existUser = $this->user_model->get_one($username);
+                if($existUser){
+                    $this->showMessage('用户名已存在', $url);
+                }else{
+                    $data ['username'] = $this->input->post('username');
+                }
+            }
             $data ['email'] = $this->input->post('email');
             $data ['tel'] = $this->input->post('tel');
+            $data['nickname'] = $this->input->post('nickname');
             $where = array(
                 'id' => $user->id
             );
             $result = $this->user_model->update_info($data, $where);
-            $url = "/user/info";
             if ($result) {
                 $this->showMessage('更新成功!', $url);
             } else {

@@ -65,12 +65,12 @@ function textLimitCheck(thisArea, maxLength)
     <div id="center_middle">
       <div class="user">
         <label>用户名：
-        <input type="text" name="userid" id="user" />
+        <input type="text" name="username" id="user" />
         </label>
       </div>
       <div class="user">
         <label>密　码：
-        <input type="password" name="pwd" id="pwd" />
+        <input type="password" name="password" id="pwd" />
         </label>
       </div>
     </div>

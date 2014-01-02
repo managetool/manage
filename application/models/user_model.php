@@ -10,11 +10,13 @@
 class user_model extends MY_Model
 {
     public $table;
+    public $adminTable;
 
     function __construct()
     {
         parent::__construct();
         $this->table = "userInfo";
+        $this->adminTable = "admin_member";
     }
 
     public function get_one($username, $isId = 0)
@@ -25,6 +27,10 @@ class user_model extends MY_Model
             $where = array('username' => $username);
         }
         return $this->db->get_where($this->table, $where)->row();
+    }
+
+    public function is_admin($uid){
+        return $this->db->get_where($this->adminTable, array('uid'=>$uid))->row();
     }
 
     public function update_info($data, $params)

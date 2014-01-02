@@ -90,7 +90,7 @@ a img {
         <td width="39"><img src="images/main_30.gif" width="39" height="30" /></td>
         <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td height="20" valign="bottom"><span class="STYLE1">当前登录用户：<?= $_username?> </span></td>
+            <td height="20" valign="bottom"><span class="STYLE1">当前登录用户：<?= $nickname?> </span></td>
             <td valign="bottom" class="STYLE1"><div align="right"></div></td>
           </tr>
         </table></td>

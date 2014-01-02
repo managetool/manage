@@ -129,11 +129,22 @@
 
                     <tr>
                         <td style="text-align:right;height:25px;line-height:25px;padding:2px;width:15%;border-bottom:1px solid #e8e8e8;border-right:1px solid #e8e8e8;">
-                            用户姓名：
+                            用户名：
                         </td>
                         <td style="text-align:left;height:25px;line-height:25px;padding:2px;width:45%;border-bottom:1px solid #e8e8e8;border-right:1px solid #e8e8e8;">
                             <input name="username" type="text" id="username" size="10" maxlength="10"
                                    value='<?= $user->username ?>'></td>
+                        <td style="text-align:left;height:25px;line-height:25px;padding:2px;width:40%;border-bottom:1px solid #e8e8e8;">
+                            数字或字母
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right;height:25px;line-height:25px;padding:2px;width:15%;border-bottom:1px solid #e8e8e8;border-right:1px solid #e8e8e8;">
+                            昵称：
+                        </td>
+                        <td style="text-align:left;height:25px;line-height:25px;padding:2px;width:45%;border-bottom:1px solid #e8e8e8;border-right:1px solid #e8e8e8;">
+                            <input name="nickname" type="text" id="nickname" size="10" maxlength="10"
+                                   value='<?= $user->nickname ?>'></td>
                         <td style="text-align:left;height:25px;line-height:25px;padding:2px;width:40%;border-bottom:1px solid #e8e8e8;">
                             汉字或常用称呼
                         </td>
