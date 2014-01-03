@@ -77,72 +77,20 @@ body {
 <body>
 <div  style="height:100%;">
   <ul id="navigation">
-    <li> <a class="head">服务供应商管理</a>
-      <ul>
-      <li class="leftmenuli">服务商管理</li>
-        <li><a href="/development/add" target="rightFrame">新建服务商</a></li>
-        <li><a href="/development" target="rightFrame">管理服务商</a></li>
-        <li class="leftmenuli">拓展管理</li>
-         <li><a href="/expand/add" target="rightFrame">新建拓展</a></li>
-        <li><a href="/expand" target="rightFrame">管理拓展</a></li>
-      </ul>
-      
-    </li>
-    <li> <a class="head">订单管理</a>
-      <ul>
-      <li class="leftmenuli">代理商管理</li>
-        <li><a href="/agent/add" target="rightFrame">新建代理商</a></li>
-        <li><a href="/agent" target="rightFrame">管理代理商</a></li>
-        <li class="leftmenuli">客户管理</li>
-        <li><a href="/customer/add" target="rightFrame">新建客户</a></li>
-        <li><a href="/customer" target="rightFrame">管理客户</a></li>
-        <li class="leftmenuli">订单管理</li>
-        <li><a href="/order/add" target="rightFrame">新建订单</a></li>
-        <li><a href="/order" target="rightFrame">管理订单</a></li>
-        <li class="leftmenuli">流水单管理</li>
-        <li><a href="/orderflow/add" target="rightFrame">新建流水单</a></li>
-        <li><a href="/orderflow" target="rightFrame">管理流水单</a></li>
-      </ul>
-    </li>
-    <li> <a class="head">市场活动</a>
-      <ul>
-       
-        <li><a href="/activity/add" target="rightFrame">新建活动</a></li>
-        <li><a href="/activity" target="rightFrame">管理活动</a></li>
-      </ul>
-    </li>
-    <li> <a class="head">数据报表</a>
-      <ul>
-        <li class="leftmenuli">服务供应商报表</li>
-        <?php if($_userdlname=='admin'||$_fuze==1){?><li><a href="/report_wish/index/development" target="rightFrame">期望数值设定</a></li><?php }?>
-        <li><a href="/development_report" target="rightFrame">报表查看</a></li>
-        <li class="leftmenuli">订单报表</li>
-         <?php if($_userdlname=='admin'||$_fuze==1){?><li><a href="/report_wish/index/order" target="rightFrame">期望数值设定</a></li><?php }?>
-        <li><a href="/order_report" target="rightFrame">报表查看</a></li>
-      </ul>
-    </li>
-    <?php if($_userdlname=='admin'){?>
-    <li> <a class="head">基础设置</a>
-      <ul>
-      <li class="leftmenuli">部门管理</li>
-        <li><a href="/department/add" target="rightFrame">增加部门</a></li>
-        <li><a href="/department" target="rightFrame">管理部门</a></li>
-        <li class="leftmenuli">用户管理</li>
-        <li><a href="/user/add" target="rightFrame">增加用户</a></li>
-        <li><a href="/user/user_list" target="rightFrame">用户管理</a></li>
-        <li class="leftmenuli">个人设置</li>
-        <li><a href="/user/info" target="rightFrame">修改信息</a></li>
-        <li><a href="/user/pswd" target="rightFrame">修改密码</a></li>
-      </ul>
-    </li>
-    <?php }else{?>
-      <li> <a class="head">个人设置</a>
-      <ul>
-        <li><a href="/user/info" target="rightFrame">修改信息</a></li>
-        <li><a href="/user/password" target="rightFrame">修改密码</a></li>
-      </ul>
-    </li>
-    <?php }?>
+      <?php
+      foreach($permission as $k=>$p){
+          ?>
+          <li><a class="head"><?= $modules[$k]['name']?></a>
+              <ul>
+                <?php foreach($p as $sub){?>
+                    <li><a href="/<?=$modules[$k]['controller']?>/<?=$modules[$sub['id']]['controller']?>" target="rightFrame"><?= $sub['name']?></a></li>
+                  <?php }?>
+              </ul>
+
+          </li>
+      <?php
+      }
+      ?>
   </ul>
 </div>
 </body>

@@ -8,10 +8,31 @@ class ADMIN_Controller extends CM_Controller
         if (!$this->session->userdata('username')) {
             $this->goToUrl('/user');
         } else {
+            $onController = $this->uri->segment(1);
+            $onAction = $this->uri->segment(2);
+            $groupID = $this->session->userdata('groupId');
+            //admin导航
+            foreach(objecttoarray($this->module_model->get_all()) as $module){
+                $modules[$module['id']] = $module;
+                if($onController && $module['controller'] == $onController){
+                    $onControllerArr = $module;
+                }
+                if($onAction && $module['controller'] == $onAction){
+                    $onActionArr = $module;
+                }
+            }
+            foreach(objecttoarray($this->module_model->get_permission($groupID)) as $p){
+                $permission[$p['parentid']][$p['id']] = $p;
+            }
+            if(($onControllerArr && !$permission[$onControllerArr['id']]) || ($onActionArr && !$permission[$onActionArr['parentid']][$onActionArr['id']])){
+                $this->showMessage("权限不足！",'/');
+            }
             $this->load->vars(array('userId' => $this->session->userdata('userId'),
                     'username' => $this->session->userdata('username'),
                     'nickname' => $this->session->userdata('nickname'),
-                    'groupId' => $this->session->userdata('groupId')
+                    'groupId' => $groupID,
+                    'modules' => $modules,
+                    'permission' => $permission
                 )
             );
         }

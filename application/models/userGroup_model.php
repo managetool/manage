@@ -10,13 +10,11 @@
 class userGroup_model extends MY_Model
 {
     public $table;
-    public $permissionTable;
 
     function __construct()
     {
         parent::__construct();
         $this->table = "usergroup";
-        $this->permissionTable = "permission";
     }
 
     function get_all()
