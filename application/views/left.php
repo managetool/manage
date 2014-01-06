@@ -78,11 +78,11 @@ body {
 <div  style="height:100%;">
   <ul id="navigation">
       <?php
-      foreach($permission as $k=>$p){
+      foreach($nav as $k=>$p){
           ?>
           <li><a class="head"><?= $modules[$k]['name']?></a>
               <ul>
-                <?php foreach($p as $sub){?>
+                <?php foreach($p['child'] as $sub){?>
                     <li><a href="/<?=$modules[$k]['controller']?>/<?=$modules[$sub['id']]['controller']?>" target="rightFrame"><?= $sub['name']?></a></li>
                   <?php }?>
               </ul>

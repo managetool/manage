@@ -35,8 +35,9 @@ class module_model extends MY_Model{
         return $result;
     }
 
-    public function get_permission($groupId){
-        $sql="select * from $this->table a left join  $this->permissionTable b on a.id = b.moduleid where b.groupid = $groupId";
+    public function get_permission($where = '', $groupby = ''){
+        $sql="select * from $this->permissionTable $where $groupby";
         return $this->db->query($sql)->result();
     }
+
 } 

@@ -95,6 +95,17 @@ class tree {
 		return $a;
 	}
 
+    public function get_tree_array(){
+        foreach($this->arr as $a){
+            if($a['parentid'] ==0){
+                $tree[$a['id']] = $a;
+            }else{
+                $tree[$a['parentid']]['child'][] = $a;
+            }
+        }
+        return $tree;
+    }
+
     /**
 	* 得到树型结构
 	* @param int ID，表示获得这个ID下的所有子级

@@ -12,27 +12,21 @@ class ADMIN_Controller extends CM_Controller
             $onAction = $this->uri->segment(2);
             $groupID = $this->session->userdata('groupId');
             //admin导航
-            foreach(objecttoarray($this->module_model->get_all()) as $module){
-                $modules[$module['id']] = $module;
-                if($onController && $module['controller'] == $onController){
-                    $onControllerArr = $module;
+            $permission = objecttoarray($this->adminstrator_model->get_grouppermission($groupID, "group by b.moduleid"));
+            foreach ($permission as $p) {
+                foreach (objecttoarray($this->module_model->get_all()) as $m) {
+                    $modules[$m['id']] = $m;
+                    if ($p['moduleid'] == $m['id']) {
+                        $nav[$m['parentid']]['child'][] = $m;
+                    }
                 }
-                if($onAction && $module['controller'] == $onAction){
-                    $onActionArr = $module;
-                }
-            }
-            foreach(objecttoarray($this->module_model->get_permission($groupID)) as $p){
-                $permission[$p['parentid']][$p['id']] = $p;
-            }
-            if(($onControllerArr && !$permission[$onControllerArr['id']]) || ($onActionArr && !$permission[$onActionArr['parentid']][$onActionArr['id']])){
-                $this->showMessage("权限不足！",'/');
             }
             $this->load->vars(array('userId' => $this->session->userdata('userId'),
                     'username' => $this->session->userdata('username'),
                     'nickname' => $this->session->userdata('nickname'),
                     'groupId' => $groupID,
                     'modules' => $modules,
-                    'permission' => $permission
+                    'nav' => $nav
                 )
             );
         }
@@ -45,7 +39,7 @@ class CM_Controller extends CI_Controller
     {
         parent::__construct();
         //group
-        $userGroup = $this->userGroup_model->get_all();
+        $userGroup = $this->usergroup_model->get_all();
         $this->load->vars(
             array('site_name' => $this->config->item('siteName'),
                 'charset' => $this->config->item('charset'),
