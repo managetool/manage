@@ -2,6 +2,7 @@
 
 class ADMIN_Controller extends CM_Controller
 {
+    public $modules;
     function __construct()
     {
         parent::__construct();
@@ -15,7 +16,7 @@ class ADMIN_Controller extends CM_Controller
             $permission = objecttoarray($this->adminstrator_model->get_grouppermission($groupID, "group by b.moduleid"));
             foreach ($permission as $p) {
                 foreach (objecttoarray($this->module_model->get_all()) as $m) {
-                    $modules[$m['id']] = $m;
+                    $this->modules[$m['id']] = $m;
                     if ($p['moduleid'] == $m['id']) {
                         $nav[$m['parentid']]['child'][] = $m;
                     }
@@ -25,7 +26,7 @@ class ADMIN_Controller extends CM_Controller
                     'username' => $this->session->userdata('username'),
                     'nickname' => $this->session->userdata('nickname'),
                     'groupId' => $groupID,
-                    'modules' => $modules,
+                    'modules' => $this->modules,
                     'nav' => $nav
                 )
             );

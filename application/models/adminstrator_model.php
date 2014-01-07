@@ -37,6 +37,11 @@ class adminstrator_model extends MY_Model{
         return $list;
     }
 
+    public function get_permission(){
+        $sql = "select * from $this->permissionTable";
+        return $this->db->query($sql)->result();
+    }
+
     public function get_one($id)
     {
         return $this->db->get_where($this->table, array('id' => $id))->row();
@@ -62,5 +67,16 @@ class adminstrator_model extends MY_Model{
     public function get_grouppermission($groupId, $order){
         $sql="select * from $this->groupPermission a left join $this->permissionTable b on a.permissionid = b.id  where a.groupid = $groupId $order";
         return $this->db->query($sql)->result();
+    }
+
+    public function insert_group_permission($obj){
+        return $this->db->insert($this->groupPermission, $obj);
+    }
+
+    public function delete_group_permission($where)
+    {
+        $wheresql = $this->whereSql($where);
+        $sql = "delete from $this->groupPermission $wheresql";
+        return $this->db->query($sql);
     }
 } 
