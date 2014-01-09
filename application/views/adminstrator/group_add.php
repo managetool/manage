@@ -69,7 +69,7 @@
                                                 <div align="center"><img src="images/tb.gif" width="14" height="14"/>
                                                 </div>
                                             </td>
-                                            <td width="98%" valign="bottom"><span class="STYLE1"> 管理组编辑</span></td>
+                                            <td width="98%" valign="bottom"><span class="STYLE1"> 管理组添加</span></td>
                                         </tr>
                                     </table>
                                 </td>
@@ -90,7 +90,7 @@
                             <div align="center">名称</div>
                         </td>
                         <td height="20" class="STYLE19">
-                            <div><input type="text" name="group_name" value="<?= $admin_group[$id]->name ?>"></div>
+                            <div><input type="text" name="group_name" value=""></div>
                         </td>
                     </tr>
                     <tr>

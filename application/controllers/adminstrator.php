@@ -29,6 +29,52 @@ class adminstrator extends ADMIN_Controller
         $this->load->view('/adminstrator/group');
     }
 
+    public function group_add(){
+        $url = "/adminstrator/group";
+        if($this->input->post()){
+            $name = $this->input->post('group_name');
+            $result = $this->adminstrator_model->insert_group(array('name'=>$name));
+            if($result)
+                $this->showMessage("添加成功", $url);
+            else
+                $this->showMessage("添加失败", $url);
+            return;
+        }
+        $this->load->view('adminstrator/group_add');
+    }
+
+    public function group_del($id){
+        $url = "/adminstrator/group";
+        $id = intval($id);
+        if($id){
+        $result = $this->adminstrator_model->del_group($id);
+            if($result)
+                $this->showMessage("删除成功", $url);
+            else
+                $this->showMessage("删除失败", $url);
+        }
+    }
+    public function group_edit($id)
+    {
+        $url = "/adminstrator/group";
+        $id = intval($id);
+        if ($this->input->post()) {
+            $group_name = $this->input->post('group_name');
+            $result = $this->adminstrator_model->update_group(array('name'=>$group_name), array('id'=>$id));
+            if($result)
+                $this->showMessage("更新成功！",$url);
+            else
+                $this->showMessage("未知错误", $url);
+            return;
+        }
+        if ($id == 1) {
+            $this->showMessage('无权限修改超级管理员组！', $url);
+            return;
+        }
+        $this->load->vars(array("id" => $id));
+        $this->load->view('/adminstrator/group_edit');
+    }
+
     public function group_permission($id)
     {
         $id = intval($id);
@@ -47,7 +93,7 @@ class adminstrator extends ADMIN_Controller
             $group_permission[$g['id']] = $g;
         }
         if ($this->input->post()) {
-            if($id == 1){
+            if ($id == 1) {
                 $this->showMessage('无权限修改超级管理员组！', $url);
                 return;
             }

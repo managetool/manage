@@ -47,19 +47,19 @@ class adminstrator_model extends MY_Model{
         return $this->db->get_where($this->table, array('id' => $id))->row();
     }
 
-    public function del($id)
+    public function del_group($id)
     {
         $sql = "delete from $this->table where id='$id'";
         return $this->db->query($sql);
     }
 
-    public function insert_one($obj)
+    public function insert_group($obj)
     {
         $this->db->insert($this->table, $obj);
         return $this->db->insert_id();
     }
 
-    public function update_info($data, $params)
+    public function update_group($data, $params)
     {
         return $this->update($data, $params);
     }
