@@ -54,7 +54,7 @@ body {
             </table></td>
             <td><div align="right"><span class="STYLE1">
               <input type="checkbox" name="checkbox11" id="checkbox11" />
-              全选      &nbsp;&nbsp;<img src="images/add.gif" width="10" height="10" /> 添加   &nbsp; <img src="images/del.gif" width="10" height="10" /> 删除    &nbsp;&nbsp;<img src="images/edit.gif" width="10" height="10" /> 编辑   &nbsp;</span><span class="STYLE1"> &nbsp;</span></div></td>
+              全选      &nbsp;&nbsp;<a href="/adminstrator/group_add"><img src="images/add.gif" width="10" height="10" /> 添加   </a> &nbsp; <img src="images/del.gif" width="10" height="10" /> 删除    &nbsp;&nbsp;<img src="images/edit.gif" width="10" height="10" /> 编辑   &nbsp;</span><span class="STYLE1"> &nbsp;</span></div></td>
           </tr>
         </table></td>
       </tr>
@@ -77,7 +77,7 @@ body {
         </div></td>
         <td height="20"  class="STYLE6"><div align="center"><span class="STYLE19"><?= $g->id?></span></div></td>
         <td height="20"  class="STYLE19"><div align="center"><?= $g->name?></div></td>
-        <td height="20" ><div align="center" class="STYLE21"><a href='/module/delete/<?= $v->id?>' onclick='return ConfirmDel();'>删除</a> | <a href="/adminstrator/group_edit/<?=$g->id?>">编辑</a> | <a href="/adminstrator/group_permission/<?=$g->id?>">权限设置</a></div></td>
+        <td height="20" ><div align="center" class="STYLE21"><a href='/adminstrator/group_del/<?= $g->id?>' onclick='return ConfirmDel();'>删除</a> | <a href="/adminstrator/group_edit/<?=$g->id?>">编辑</a> | <a href="/adminstrator/group_permission/<?=$g->id?>">权限设置</a></div></td>
       </tr>
       <?php }?>
     </table></td>
